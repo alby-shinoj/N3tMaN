@@ -1,10 +1,7 @@
 #!/bin/bash
 
 # Define IP ranges to scan
-IP_RANGES=("192.169.4.0/24")
-
-# Custom wordlist path
-WORDLIST="/home/abby/common.txt"  # Update this path to your wordlist
+IP_RANGES=("192.169.2.0/24" "192.168.3.0/24")
 
 # Output directory for reports
 OUTPUT_DIR="scan_reports"
@@ -36,9 +33,9 @@ run_vuln_scans() {
     echo "[*] Running Nikto on $target"
     nikto -h "http://$target" -output "$OUTPUT_DIR/nikto_$target.txt"
 
-    # Dirb scan with custom wordlist
-    echo "[*] Running Dirb on $target with wordlist: $WORDLIST"
-    dirb "http://$target" "$WORDLIST" -o "$OUTPUT_DIR/dirb_$target.txt"
+    # Dirb scan
+    echo "[*] Running Dirb on $target"
+    dirb "http://$target" -o "$OUTPUT_DIR/dirb_$target.txt"
 
     # OWASP ZAP scan (basic spider and active scan)
     echo "[*] Running OWASP ZAP on $target"
