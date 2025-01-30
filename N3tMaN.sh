@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define IP ranges to scan
-IP_RANGES=("192.169.2.0/24" "192.168.3.0/24")
+IP_RANGES=("<ip>" "<ip>")
 
 # Output directory for reports
 OUTPUT_DIR="scan_reports"
